@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background circle with grass green -->
+  <circle cx="16" cy="16" r="15" fill="#29a352"/>
+
+  <!-- Stylized grass blades -->
+  <path d="M8 24 L10 14 L12 24" fill="none" stroke="#1a7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 24 L16 11 L18 24" fill="none" stroke="#1a7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 24 L22 14 L24 24" fill="none" stroke="#1a7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Mower wheel representation / golden accent dot -->
+  <circle cx="16" cy="8" r="3" fill="#f5b21a"/>
+
+  <!-- Ground line -->
+  <line x1="6" y1="24" x2="26" y2="24" stroke="#1a7a3a" stroke-width="2" stroke-linecap="round"/>
+</svg>
