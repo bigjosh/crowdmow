@@ -86,7 +86,7 @@ const Index = () => {
                 1
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-2">Get Your Mower</h3>
-              <p className="text-muted-foreground">We ship our exclusive CrowdMow robot directly to your door. Simple setup takes 5 minutes.</p>
+              <p className="text-muted-foreground">We ship our exclusive CrowdMow telemower directly to your door. Simple setup takes 5 minutes.</p>
             </div>
             
             <div className="text-center p-8 bg-card rounded-2xl shadow-md hover:shadow-lg transition-shadow">
