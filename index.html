@@ -1,28 +1,305 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CrowdMow - The Future of Lawn Care</title>
-    <meta name="description" content="Remote-controlled precision mowing by humans who love lawns. No autonomous robots. Real people. Perfect results." />
-    <meta name="author" content="CrowdMow" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrowdMow - The Future of Lawn Care</title>
+  <meta name="description" content="Remote-controlled precision mowing by humans who love lawns. No autonomous robots. Real people. Perfect results.">
+  <meta name="author" content="CrowdMow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta property="og:title" content="CrowdMow - The Future of Lawn Care">
+  <meta property="og:description" content="Remote-controlled precision mowing by humans who love lawns. No autonomous robots. Real people. Perfect results.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://crowdmow.com/logo-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CrowdMow">
+  <meta name="twitter:image" content="https://crowdmow.com/logo-512.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo group">
+          <div class="logo-icon bg-gradient-hero shadow-glow">
+            <svg class="w-5 h-5 text-primary-foreground rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+            </svg>
+          </div>
+          <span class="logo-text text-foreground">Crowd<span class="text-gradient-hero">Mow</span></span>
+        </a>
+        <nav class="nav">
+          <a href="owners.html" class="nav-link">For Lawn Owners</a>
+          <a href="mowernauts.html" class="nav-link">For Mowernauts</a>
+          <a href="security.html" class="nav-link">Security</a>
+          <a href="why-human.html" class="nav-link">Why Human?</a>
+        </nav>
+      </div>
+    </header>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <div class="absolute inset-0 z-0">
+        <img src="assets/hero-lawn.jpg" alt="Beautiful mowed lawn" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80"></div>
+      </div>
+      <div class="relative z-10 container px-4 text-center">
+        <div class="animate-slide-up">
+          <h1 class="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+            The Future of
+            <span class="block text-gradient-gold">Lawn Care</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto mb-12">
+            Remote-controlled precision mowing by humans who love lawns.
+            No autonomous robots. Real people. Perfect results.
+          </p>
+        </div>
 
-    <meta property="og:title" content="CrowdMow - The Future of Lawn Care" />
-    <meta property="og:description" content="Remote-controlled precision mowing by humans who love lawns. No autonomous robots. Real people. Perfect results." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://crowdmow.com/logo-512.png" />
+        <!-- Audience Selector -->
+        <div class="animate-fade-in flex flex-col md:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
+          <a href="owners.html" class="w-full md:w-auto">
+            <div class="group relative p-8 bg-card/95 rounded-2xl shadow-lg hover:shadow-glow transition-all hover:-translate-y-2 border border-primary/20">
+              <div class="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-foreground mb-2">I Have a Lawn</h3>
+              <p class="text-muted-foreground mb-4">Get your lawn mowed perfectly by a human who cares</p>
+              <span class="btn btn-owner w-full">
+                Get Started
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@CrowdMow" />
-    <meta name="twitter:image" content="https://crowdmow.com/logo-512.png" />
-  </head>
+          <a href="mowernauts.html" class="w-full md:w-auto">
+            <div class="group relative p-8 bg-card/95 rounded-2xl shadow-lg hover:shadow-lg transition-all hover:-translate-y-2 border border-sky/20">
+              <div class="w-16 h-16 rounded-xl bg-sky flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-bold text-foreground mb-2">I Love Mowing</h3>
+              <p class="text-muted-foreground mb-4">Earn money remotely mowing lawns from anywhere</p>
+              <span class="btn btn-mowernaut w-full">
+                Start Earning
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- How It Works -->
+    <section class="py-24 bg-background grass-pattern">
+      <div class="container px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">How CrowdMow Works</h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">The perfect blend of human expertise and robotic precision</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center p-8 bg-card rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-primary font-display">1</div>
+            <h3 class="font-display text-xl font-bold text-foreground mb-2">Get Your Mower</h3>
+            <p class="text-muted-foreground">We ship our exclusive CrowdMow telemower directly to your door. Simple setup takes 5 minutes.</p>
+          </div>
+
+          <div class="text-center p-8 bg-card rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-primary font-display">2</div>
+            <h3 class="font-display text-xl font-bold text-foreground mb-2">Schedule a Mow</h3>
+            <p class="text-muted-foreground">Pick a time that works for you. Our Mowernauts are available 7 days a week.</p>
+          </div>
+
+          <div class="text-center p-8 bg-card rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-primary font-display">3</div>
+            <h3 class="font-display text-xl font-bold text-foreground mb-2">Enjoy Perfection</h3>
+            <p class="text-muted-foreground">Watch as your lawn is expertly mowed by a human operator who takes pride in their work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="py-24 bg-muted">
+      <div class="container px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <svg class="w-10 h-10 text-primary mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            <h3 class="font-display text-lg font-bold text-foreground mb-2">Fully Insured</h3>
+            <p class="text-sm text-muted-foreground">Complete coverage for your property and our equipment.</p>
+          </div>
+
+          <div class="p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <svg class="w-10 h-10 text-primary mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>
+            <h3 class="font-display text-lg font-bold text-foreground mb-2">Human Intelligence</h3>
+            <p class="text-sm text-muted-foreground">Real people who understand your lawn's unique needs.</p>
+          </div>
+
+          <div class="p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <svg class="w-10 h-10 text-primary mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <h3 class="font-display text-lg font-bold text-foreground mb-2">5-Star Results</h3>
+            <p class="text-sm text-muted-foreground">Rated operators who take pride in perfect lawns.</p>
+          </div>
+
+          <div class="p-6 bg-card rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <svg class="w-10 h-10 text-primary mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3 class="font-display text-lg font-bold text-foreground mb-2">Community</h3>
+            <p class="text-sm text-muted-foreground">Join thousands of happy lawn owners and operators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="py-24 bg-background">
+      <div class="container px-4">
+        <h2 class="font-display text-4xl font-bold text-foreground text-center mb-16">What People Are Saying</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="p-6 bg-card rounded-2xl shadow-md">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-foreground mb-4">"I never thought I'd say this, but I actually look forward to my lawn being mowed. The Mowernaut knows exactly what my lawn needs!"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">S</div>
+              <div>
+                <p class="font-semibold text-foreground">Sarah M.</p>
+                <p class="text-sm text-muted-foreground">Lawn Owner, Austin TX</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-card rounded-2xl shadow-md">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-foreground mb-4">"As a Mowernaut, I get to relax with a beautiful view of green grass while earning money. It's incredibly zen and satisfying."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-sky/20 flex items-center justify-center text-sky font-bold">J</div>
+              <div>
+                <p class="font-semibold text-foreground">James K.</p>
+                <p class="text-sm text-muted-foreground">Mowernaut, Portland OR</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-card rounded-2xl shadow-md">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="w-5 h-5 fill-gold text-gold" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="text-foreground mb-4">"The app is so easy to use. I can see exactly when my lawn was last mowed and schedule the next one in seconds."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">M</div>
+              <div>
+                <p class="font-semibold text-foreground">Michael R.</p>
+                <p class="text-sm text-muted-foreground">Lawn Owner, Denver CO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-hero relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary-foreground blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-primary-foreground blur-3xl"></div>
+      </div>
+      <div class="container px-4 text-center relative z-10">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Ready to Join the Lawn Revolution?</h2>
+        <p class="text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-10">Whether you have a lawn that needs love or you want to become a Mowernaut, we're ready for you.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="owners.html" class="btn btn-hero btn-xl">
+            I Have a Lawn
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="mowernauts.html" class="btn btn-hero-outline btn-xl">
+            I Want to Mow
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container px-4">
+        <div class="footer-grid">
+          <div class="footer-section space-y-4">
+            <a href="index.html" class="logo">
+              <div class="logo-icon bg-gradient-hero">
+                <svg class="w-5 h-5 text-primary-foreground rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+                </svg>
+              </div>
+              <span class="font-display text-xl font-bold">CrowdMow</span>
+            </a>
+            <p class="text-background/70 text-sm">Connecting lawn lovers with lawn owners through the magic of remote mowing.</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>For Owners</h4>
+            <ul>
+              <li><a href="owners.html">How It Works</a></li>
+              <li><a href="owners.html">Pricing</a></li>
+              <li><a href="security.html">Security</a></li>
+              <li><a href="why-human.html">Why Human Operators</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>For Mowernauts</h4>
+            <ul>
+              <li><a href="mowernauts.html">Start Earning</a></li>
+              <li><a href="mowernauts.html">The Cockpit</a></li>
+              <li><a href="mowernauts.html">Community</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                hello@crowdmow.com
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                1-800-CROWDMOW
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                San Francisco, CA
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 CrowdMow. All rights reserved. Making lawns beautiful, one remote mow at a time.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
