@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Waitlist - CrowdMow</title>
+  <meta name="description" content="Join the CrowdMow waitlist and be the first to get your telemower. Currently shipping in 2-3 months.">
+  <meta name="author" content="CrowdMow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta property="og:title" content="Join the Waitlist - CrowdMow">
+  <meta property="og:description" content="Join the CrowdMow waitlist and be the first to get your telemower. Currently shipping in 2-3 months.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://crowdmow.com/logo-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CrowdMow">
+  <meta name="twitter:image" content="https://crowdmow.com/logo-512.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .waitlist-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .waitlist-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .waitlist-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .waitlist-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 50px;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .waitlist-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .waitlist-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 640px) {
+      .waitlist-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    .waitlist-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .waitlist-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+
+    .waitlist-card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .waitlist-card .lead-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+
+    .form-group {
+      flex: 1;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #9ca3af;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+    }
+
+    .submit-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .privacy-note {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 16px;
+    }
+
+    .privacy-note a {
+      color: #22c55e;
+      text-decoration: underline;
+    }
+
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .features-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .feature-item {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .feature-item .icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 24px;
+    }
+
+    .feature-item h4 {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature-item p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Success state */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-message .icon {
+      width: 64px;
+      height: 64px;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 32px;
+    }
+
+    .success-message h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .success-message p {
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="header" style="background: transparent; position: absolute; width: 100%;">
+      <div class="container header-inner">
+        <a href="index.html" class="logo group">
+          <div class="logo-icon bg-gradient-hero shadow-glow">
+            <svg class="w-5 h-5 text-primary-foreground rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+            </svg>
+          </div>
+          <span class="logo-text text-primary-foreground">Crowd<span style="color: #fbbf24;">Mow</span></span>
+        </a>
+        <nav class="nav">
+          <a href="owners.html" class="nav-link" style="color: rgba(255,255,255,0.9);">For Lawn Owners</a>
+          <a href="mowernauts.html" class="nav-link" style="color: rgba(255,255,255,0.9);">For Mowernauts</a>
+          <a href="security.html" class="nav-link" style="color: rgba(255,255,255,0.9);">Security</a>
+          <a href="why-human.html" class="nav-link" style="color: rgba(255,255,255,0.9);">Why Human?</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist-hero">
+      <div class="waitlist-content">
+        <div class="waitlist-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+          </svg>
+          Limited Early Access
+        </div>
+
+        <h1 class="waitlist-title font-display">
+          Get Your Telemower
+        </h1>
+        <p class="waitlist-subtitle">
+          Join the waitlist and be among the first to experience human-powered remote mowing. We'll notify you when your mower is ready to ship.
+        </p>
+
+        <div class="waitlist-card">
+          <h2>Join the Waitlist</h2>
+          <div class="lead-time">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Current lead time: 2-3 months
+          </div>
+
+          <!-- Mailchimp Form -->
+          <form
+            action="MAILCHIMP_FORM_ACTION_URL"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="waitlist-form"
+            target="_blank"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="mce-FNAME">First Name</label>
+                <input type="text" name="FNAME" id="mce-FNAME" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label for="mce-LNAME">Last Name</label>
+                <input type="text" name="LNAME" id="mce-LNAME" placeholder="Smith">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mce-EMAIL">Email Address</label>
+              <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mce-ZIPCODE">ZIP Code (for shipping estimate)</label>
+              <input type="text" name="ZIPCODE" id="mce-ZIPCODE" placeholder="90210">
+            </div>
+
+            <!-- Hidden field for Mailchimp group/tag -->
+            <input type="hidden" name="tags" value="crowdmow">
+
+            <!-- Bot protection -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_MAILCHIMP_U_VALUE_HERE" tabindex="-1" value="">
+            </div>
+
+            <button type="submit" name="subscribe" class="submit-btn">
+              Join the Waitlist
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+
+          <p class="privacy-note">
+            We respect your privacy. Unsubscribe anytime. Read our <a href="#">Privacy Policy</a>.
+          </p>
+        </div>
+
+        <!-- Features below card -->
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="icon">🚚</div>
+            <h4>Free Shipping</h4>
+            <p>Delivered to your door</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon">🛡️</div>
+            <h4>Fully Insured</h4>
+            <p>Complete peace of mind</p>
+          </div>
+          <div class="feature-item">
+            <div class="icon">⭐</div>
+            <h4>Priority Access</h4>
+            <p>First in line for mowers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

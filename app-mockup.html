@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrowdMow App Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow:
+        0 25px 50px -12px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Notch removed for clean screenshot */
+
+    .screen {
+      height: 100%;
+      overflow-y: auto;
+      background: #f8faf8;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .screen::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    /* Status Bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px 10px;
+      background: #22c55e;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .status-bar-left {
+      width: 60px;
+    }
+
+    .status-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 60px;
+      justify-content: flex-end;
+    }
+
+    .signal-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 1px;
+      height: 12px;
+    }
+
+    .signal-bar {
+      width: 3px;
+      background: white;
+      border-radius: 1px;
+    }
+
+    .battery {
+      width: 24px;
+      height: 11px;
+      border: 1.5px solid white;
+      border-radius: 3px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+    }
+
+    .battery::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      width: 2px;
+      height: 5px;
+      background: white;
+      border-radius: 0 1px 1px 0;
+    }
+
+    .battery-fill {
+      width: 80%;
+      height: 100%;
+      background: white;
+      border-radius: 1px;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 8px 20px 24px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .greeting {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .lawn-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .header-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Weather Card */
+    .weather-card {
+      background: white;
+      margin: -12px 16px 16px;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .weather-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .weather-title {
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .weather-main {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .weather-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .weather-info h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .weather-info p {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .mow-recommendation {
+      background: #dcfce7;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mow-recommendation.good {
+      background: #dcfce7;
+    }
+
+    .mow-recommendation .icon {
+      width: 32px;
+      height: 32px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .mow-recommendation .text {
+      flex: 1;
+    }
+
+    .mow-recommendation .text strong {
+      display: block;
+      font-size: 14px;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .mow-recommendation .text span {
+      font-size: 12px;
+      color: #15803d;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: flex;
+      gap: 12px;
+      padding: 0 16px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .stat-card .label {
+      font-size: 11px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .stat-card .sub {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    /* Schedule Section */
+    .section {
+      padding: 0 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .section-action {
+      font-size: 14px;
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    /* Calendar Mini */
+    .calendar-mini {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .calendar-month {
+      text-align: center;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .calendar-days span {
+      font-size: 11px;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .calendar-dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .calendar-date {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #374151;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    .calendar-date.other-month {
+      color: #d1d5db;
+    }
+
+    .calendar-date.today {
+      background: #f3f4f6;
+      font-weight: 700;
+    }
+
+    .calendar-date.scheduled {
+      background: #22c55e;
+      color: white;
+      font-weight: 600;
+    }
+
+    .calendar-date.mowed {
+      background: #bbf7d0;
+      color: #166534;
+    }
+
+    /* Upcoming */
+    .upcoming-card {
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .upcoming-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .upcoming-info {
+      flex: 1;
+    }
+
+    .upcoming-info .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .upcoming-info .subtitle {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .upcoming-time {
+      text-align: right;
+    }
+
+    .upcoming-time .day {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .upcoming-time .time {
+      font-size: 12px;
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+    /* Activity */
+    .activity-list {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .activity-icon.mow {
+      background: #dcfce7;
+    }
+
+    .activity-icon.rating {
+      background: #fef3c7;
+    }
+
+    .activity-info {
+      flex: 1;
+    }
+
+    .activity-info .title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .activity-info .subtitle {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .activity-meta {
+      text-align: right;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      padding: 8px 0 28px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #9ca3af;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .nav-item.active {
+      color: #22c55e;
+    }
+
+    .nav-item .icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    /* Schedule Button */
+    .schedule-fab {
+      position: absolute;
+      bottom: 90px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="screen">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <div class="status-bar-left">9:41</div>
+        <div class="status-bar-right">
+          <div class="signal-bars">
+            <div class="signal-bar" style="height: 4px;"></div>
+            <div class="signal-bar" style="height: 6px;"></div>
+            <div class="signal-bar" style="height: 9px;"></div>
+            <div class="signal-bar" style="height: 12px;"></div>
+          </div>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="white">
+            <path d="M8 2.4C5.6 2.4 3.4 3.2 1.6 4.6L0 3C2.2 1.2 4.9 0 8 0C11.1 0 13.8 1.2 16 3L14.4 4.6C12.6 3.2 10.4 2.4 8 2.4ZM8 6C6.4 6 4.9 6.5 3.6 7.4L2 5.8C3.7 4.6 5.8 3.8 8 3.8C10.2 3.8 12.3 4.6 14 5.8L12.4 7.4C11.1 6.5 9.6 6 8 6ZM8 9.6C7.2 9.6 6.4 9.8 5.7 10.3L8 12.6L10.3 10.3C9.6 9.8 8.8 9.6 8 9.6Z"/>
+          </svg>
+          <div class="battery">
+            <div class="battery-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-top">
+          <div>
+            <div class="greeting">Good morning, Sarah</div>
+            <div class="lawn-name">123 Oak Street</div>
+          </div>
+          <div class="header-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather Card -->
+      <div class="weather-card">
+        <div class="weather-header">
+          <span class="weather-title">Today's Conditions</span>
+          <span style="font-size: 12px; color: #6b7280;">Austin, TX</span>
+        </div>
+        <div class="weather-main">
+          <div class="weather-icon">☀️</div>
+          <div class="weather-info">
+            <h3>72°F</h3>
+            <p>Sunny, Low humidity</p>
+          </div>
+        </div>
+        <div class="mow-recommendation good">
+          <div class="icon">✓</div>
+          <div class="text">
+            <strong>Great day to mow!</strong>
+            <span>Dry conditions • No rain expected</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="label">Last Mowed</div>
+          <div class="value">5 days</div>
+          <div class="sub">Jan 29, 2:30pm</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Grass Height</div>
+          <div class="value">3.2"</div>
+          <div class="sub">Ready to mow</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">This Month</div>
+          <div class="value">3</div>
+          <div class="sub">mow sessions</div>
+        </div>
+      </div>
+
+      <!-- Schedule Section -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Schedule</span>
+          <span class="section-action">View all</span>
+        </div>
+        <div class="calendar-mini">
+          <div class="calendar-month">February 2026</div>
+          <div class="calendar-days">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+          <div class="calendar-dates">
+            <div class="calendar-date other-month">26</div>
+            <div class="calendar-date other-month">27</div>
+            <div class="calendar-date other-month">28</div>
+            <div class="calendar-date other-month mowed">29</div>
+            <div class="calendar-date other-month">30</div>
+            <div class="calendar-date other-month">31</div>
+            <div class="calendar-date">1</div>
+            <div class="calendar-date">2</div>
+            <div class="calendar-date today">3</div>
+            <div class="calendar-date">4</div>
+            <div class="calendar-date">5</div>
+            <div class="calendar-date scheduled">6</div>
+            <div class="calendar-date">7</div>
+            <div class="calendar-date">8</div>
+            <div class="calendar-date">9</div>
+            <div class="calendar-date">10</div>
+            <div class="calendar-date">11</div>
+            <div class="calendar-date">12</div>
+            <div class="calendar-date scheduled">13</div>
+            <div class="calendar-date">14</div>
+            <div class="calendar-date">15</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-title">Next Scheduled</span>
+        </div>
+        <div class="upcoming-card">
+          <div class="upcoming-icon">🌿</div>
+          <div class="upcoming-info">
+            <div class="title">Standard Mow</div>
+            <div class="subtitle">Mowernaut: James K. ⭐ 4.9</div>
+          </div>
+          <div class="upcoming-time">
+            <div class="day">Friday</div>
+            <div class="time">2:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <div class="section" style="padding-bottom: 100px;">
+        <div class="section-header">
+          <span class="section-title">Recent Activity</span>
+          <span class="section-action">History</span>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon mow">🌿</div>
+            <div class="activity-info">
+              <div class="title">Mow Completed</div>
+              <div class="subtitle">Standard mow • 45 min</div>
+            </div>
+            <div class="activity-meta">Jan 29</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon rating">⭐</div>
+            <div class="activity-info">
+              <div class="title">You rated James K.</div>
+              <div class="subtitle">5 stars • "Perfect lines!"</div>
+            </div>
+            <div class="activity-meta">Jan 29</div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon mow">🌿</div>
+            <div class="activity-info">
+              <div class="title">Mow Completed</div>
+              <div class="subtitle">Premium mow • 58 min</div>
+            </div>
+            <div class="activity-meta">Jan 22</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule FAB -->
+      <div class="schedule-fab">+</div>
+
+      <!-- Bottom Nav -->
+      <div class="bottom-nav">
+        <div class="nav-item active">
+          <div class="icon">🏠</div>
+          <span>Home</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon">📅</div>
+          <span>Schedule</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon">📍</div>
+          <span>My Lawn</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon">👤</div>
+          <span>Account</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
