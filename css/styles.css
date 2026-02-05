@@ -335,20 +335,23 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  z-index: 51;
+  position: relative;
 }
 
 .mobile-menu-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   stroke: var(--foreground);
-  stroke-width: 2;
+  stroke-width: 2.5;
 }
 
 .mobile-menu-btn .close-icon {
@@ -372,11 +375,12 @@ a {
   right: 0;
   bottom: 0;
   background: var(--background);
-  z-index: 40;
+  z-index: 45;
   padding: 1.5rem;
   flex-direction: column;
   gap: 0.5rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav.open {
@@ -391,11 +395,12 @@ a {
   color: var(--foreground);
   border-radius: 0.75rem;
   transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link:active {
-  background: var(--muted);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 @media (min-width: 768px) {
@@ -689,4 +694,17 @@ a {
 @media (max-width: 767px) {
   .text-8xl { font-size: 4rem; }
   .text-9xl { font-size: 5rem; }
+
+  /* Improve hero section on mobile */
+  .text-5xl { font-size: 2.25rem; }
+
+  /* Better card sizing on mobile */
+  .p-8 { padding: 1.5rem; }
+
+  /* Adjust container padding on mobile */
+  .container { padding-left: 1rem; padding-right: 1rem; }
+
+  /* Fix section padding on mobile */
+  .py-24 { padding-top: 4rem; padding-bottom: 4rem; }
+  .pt-32 { padding-top: 6rem; }
 }
