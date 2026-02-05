@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrowdMow Cockpit Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: white;
+      overflow: hidden;
+    }
+
+    .cockpit {
+      width: 1200px;
+      height: 750px;
+      background: #111;
+      position: relative;
+      display: grid;
+      grid-template-columns: 280px 1fr 200px;
+      grid-template-rows: 60px 1fr 140px;
+      gap: 0;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      grid-column: 1 / -1;
+      background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-text span {
+      color: #22c55e;
+    }
+
+    .session-info {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .session-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #22c55e;
+    }
+
+    .session-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .session-timer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .earnings {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      color: #22c55e;
+    }
+
+    /* Left Panel */
+    .left-panel {
+      background: #151515;
+      border-right: 1px solid #2a2a2a;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-section {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .panel-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    /* Mini Map */
+    .mini-map {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #111;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-map-lawn {
+      position: absolute;
+      inset: 15px;
+      background: #1a3d1a;
+      border-radius: 4px;
+    }
+
+    .mini-map-mowed {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 60%;
+      height: 70%;
+      background: repeating-linear-gradient(
+        90deg,
+        #2d5a2d 0px,
+        #2d5a2d 4px,
+        #245024 4px,
+        #245024 8px
+      );
+      border-radius: 4px 0 0 0;
+    }
+
+    .mini-map-position {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #22c55e;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      top: 58%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    }
+
+    .mini-map-path {
+      position: absolute;
+      top: 15px;
+      left: calc(15px + 60% - 2px);
+      width: 4px;
+      height: calc(70% - 10px);
+      background: rgba(34, 197, 94, 0.3);
+    }
+
+    .progress-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 8px;
+      background: #111;
+      border-radius: 6px;
+    }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #666;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Mower Status */
+    .status-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-label {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .status-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-value.good { color: #22c55e; }
+    .status-value.warning { color: #f59e0b; }
+
+    .battery-bar {
+      width: 50px;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .battery-fill {
+      height: 100%;
+      width: 73%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      border-radius: 4px;
+    }
+
+    /* Main View */
+    .main-view {
+      position: relative;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .pov-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pov-image {
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: saturate(1.15) contrast(1.05);
+    }
+
+    /* Fisheye barrel distortion effect */
+    .fisheye-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 120% 120% at 50% 50%,
+        transparent 0%,
+        transparent 60%,
+        rgba(0,0,0,0.15) 80%,
+        rgba(0,0,0,0.4) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Lens vignette */
+    .vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 150px 30px rgba(0,0,0,0.5);
+      pointer-events: none;
+      border-radius: 8px;
+    }
+
+    /* Camera info overlay */
+    .camera-info {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.6);
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    .camera-info .rec {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #ef4444;
+    }
+
+    .camera-info .rec-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.3; }
+    }
+
+    /* Obstacle Overlays */
+    .obstacle-overlay {
+      position: absolute;
+      border: 3px solid;
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 4px;
+    }
+
+    .obstacle-overlay.danger {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+
+    .obstacle-overlay.warning {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    }
+
+    .obstacle-overlay.info {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .obstacle-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    .obstacle-overlay.danger .obstacle-label {
+      background: #ef4444;
+      color: white;
+    }
+
+    .obstacle-overlay.warning .obstacle-label {
+      background: #f59e0b;
+      color: #000;
+    }
+
+    .obstacle-overlay.info .obstacle-label {
+      background: #3b82f6;
+      color: white;
+    }
+
+    /* HUD Overlay */
+    .hud-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hud-crosshair {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+    }
+
+    .hud-crosshair::before,
+    .hud-crosshair::after {
+      content: '';
+      position: absolute;
+      background: rgba(34, 197, 94, 0.6);
+    }
+
+    .hud-crosshair::before {
+      width: 2px;
+      height: 20px;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      box-shadow: 0 40px 0 rgba(34, 197, 94, 0.6);
+    }
+
+    .hud-crosshair::after {
+      width: 20px;
+      height: 2px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      box-shadow: 40px 0 0 rgba(34, 197, 94, 0.6);
+    }
+
+    .hud-speed {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #333;
+    }
+
+    .hud-speed-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: #22c55e;
+    }
+
+    .hud-speed-unit {
+      font-size: 14px;
+      color: #888;
+      margin-left: 4px;
+    }
+
+    .hud-direction {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .compass {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .compass span {
+      color: #666;
+    }
+
+    .compass span.active {
+      color: #22c55e;
+      font-weight: 700;
+    }
+
+    /* Right Panel */
+    .right-panel {
+      background: #151515;
+      border-left: 1px solid #2a2a2a;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Trimmer Switch */
+    .trimmer-control {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .trimmer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .trimmer-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .switch {
+      width: 52px;
+      height: 28px;
+      background: #333;
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .switch.active {
+      background: #22c55e;
+    }
+
+    .switch-knob {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .switch.active .switch-knob {
+      transform: translateX(24px);
+    }
+
+    .trimmer-status {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+    }
+
+    .trimmer-status.active {
+      color: #22c55e;
+    }
+
+    /* Blade Speed */
+    .blade-control {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .blade-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .blade-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+    }
+
+    .blade-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #22c55e;
+    }
+
+    .blade-slider {
+      width: 100%;
+      height: 6px;
+      background: #333;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .blade-slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 75%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      border-radius: 3px;
+    }
+
+    .blade-slider-thumb {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+      top: 50%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Cut Height */
+    .height-control {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .height-display {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin: 8px 0;
+    }
+
+    .height-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .height-unit {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .height-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .height-btn {
+      flex: 1;
+      padding: 8px;
+      background: #252525;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .height-btn:hover {
+      background: #333;
+    }
+
+    /* Bottom Controls */
+    .bottom-controls {
+      grid-column: 1 / -1;
+      background: #151515;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 20px;
+    }
+
+    /* WASD Controls */
+    .wasd-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 48px);
+      grid-template-rows: repeat(2, 48px);
+      gap: 6px;
+    }
+
+    .key {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 600;
+      color: #888;
+      box-shadow: 0 4px 0 #111, 0 6px 8px rgba(0,0,0,0.3);
+    }
+
+    .key.active {
+      background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+      border-color: #22c55e;
+      color: white;
+      box-shadow: 0 2px 0 #15803d, 0 4px 8px rgba(34, 197, 94, 0.3);
+      transform: translateY(2px);
+    }
+
+    .key.w { grid-column: 2; }
+    .key.a { grid-column: 1; grid-row: 2; }
+    .key.s { grid-column: 2; grid-row: 2; }
+    .key.d { grid-column: 3; grid-row: 2; }
+
+    /* Throttle */
+    .throttle-control {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .throttle-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    .throttle-slider {
+      width: 12px;
+      height: 100px;
+      background: #222;
+      border-radius: 6px;
+      position: relative;
+      border: 1px solid #333;
+    }
+
+    .throttle-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(0deg, #22c55e, #4ade80);
+      border-radius: 0 0 5px 5px;
+    }
+
+    .throttle-thumb {
+      position: absolute;
+      left: 50%;
+      bottom: 45%;
+      transform: translate(-50%, 50%);
+      width: 24px;
+      height: 10px;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .action-btn {
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+    }
+
+    .action-btn.primary {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    .action-btn.secondary {
+      background: #252525;
+      color: #888;
+      border: 1px solid #333;
+    }
+
+    .action-btn.danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    /* Emergency Stop */
+    .emergency-stop {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
+      border: 4px solid #fca5a5;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #7f1d1d, 0 8px 16px rgba(0,0,0,0.4);
+    }
+
+    .emergency-stop span {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .emergency-stop .icon {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cockpit">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg)">
+            <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+          </svg>
+        </div>
+        <span class="logo-text">Crowd<span>Mow</span> Cockpit</span>
+      </div>
+      <div class="session-info">
+        <div class="session-badge">
+          <div class="dot"></div>
+          Live Session
+        </div>
+        <div class="session-timer">00:34:12</div>
+        <div class="earnings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/><path d="M8 14h8"/>
+          </svg>
+          $8.53
+        </div>
+      </div>
+    </div>
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="panel-section">
+        <div class="panel-section-title">Lawn Progress</div>
+        <div class="mini-map">
+          <div class="mini-map-lawn"></div>
+          <div class="mini-map-mowed"></div>
+          <div class="mini-map-path"></div>
+          <div class="mini-map-position"></div>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-item">
+            <div class="stat-value">68%</div>
+            <div class="stat-label">Complete</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">~12m</div>
+            <div class="stat-label">Remaining</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-section-title">Mower Status</div>
+        <div class="status-grid">
+          <div class="status-row">
+            <span class="status-label">Battery</span>
+            <span class="status-value good">
+              73%
+              <div class="battery-bar"><div class="battery-fill"></div></div>
+            </span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">Signal</span>
+            <span class="status-value good">Excellent</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">Latency</span>
+            <span class="status-value good">24ms</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">Blade Temp</span>
+            <span class="status-value warning">142°F</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main POV View -->
+    <div class="main-view">
+      <!-- Realistic Lawn POV with fisheye -->
+      <div class="pov-container">
+        <img
+          class="pov-image"
+          src="telemower-pov.png"
+          alt="Lawn POV"
+        />
+        <div class="fisheye-overlay"></div>
+        <div class="vignette"></div>
+        <div class="camera-info">
+          <div class="rec">
+            <div class="rec-dot"></div>
+            REC
+          </div>
+          <span>CAM 1 • 1080p60</span>
+        </div>
+      </div>
+
+      <!-- Obstacle Overlays -->
+      <div class="obstacle-overlay warning" style="left: 2%; top: 15%; width: 100px; height: 180px;">
+        <span class="obstacle-label">Tree Line</span>
+      </div>
+      <div class="obstacle-overlay danger" style="left: 42%; top: 32%; width: 95px; height: 95px; border-radius: 50%;">
+        <span class="obstacle-label">Ball</span>
+      </div>
+      <div class="obstacle-overlay warning" style="right: 5%; top: 12%; width: 110px; height: 160px;">
+        <span class="obstacle-label">Trees</span>
+      </div>
+
+      <!-- HUD Overlay -->
+      <div class="hud-overlay">
+        <div class="hud-crosshair"></div>
+        <div class="hud-speed">
+          <span class="hud-speed-value">2.4</span>
+          <span class="hud-speed-unit">mph</span>
+        </div>
+        <div class="hud-direction">
+          <div class="compass">
+            <span>N</span>
+            <span class="active">NE</span>
+            <span>E</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="trimmer-control">
+        <div class="trimmer-header">
+          <span class="trimmer-title">Deploy Trimmer</span>
+          <div class="switch active">
+            <div class="switch-knob"></div>
+          </div>
+        </div>
+        <div class="trimmer-status active">Trimmer Active</div>
+      </div>
+
+      <div class="blade-control">
+        <div class="blade-header">
+          <span class="blade-title">Blade Speed</span>
+          <span class="blade-value">2,800 RPM</span>
+        </div>
+        <div class="blade-slider">
+          <div class="blade-slider-fill"></div>
+          <div class="blade-slider-thumb"></div>
+        </div>
+      </div>
+
+      <div class="height-control">
+        <div class="panel-section-title" style="margin-bottom: 0;">Cut Height</div>
+        <div class="height-display">
+          <span class="height-value">2.5</span>
+          <span class="height-unit">inches</span>
+        </div>
+        <div class="height-buttons">
+          <button class="height-btn">−</button>
+          <button class="height-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="bottom-controls">
+      <div class="throttle-control">
+        <div class="throttle-slider">
+          <div class="throttle-fill"></div>
+          <div class="throttle-thumb"></div>
+        </div>
+        <span class="throttle-label">Throttle</span>
+      </div>
+
+      <div class="wasd-controls">
+        <div class="key w active">W</div>
+        <div class="key a">A</div>
+        <div class="key s">S</div>
+        <div class="key d">D</div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-btn primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+          Auto-Stripe
+        </button>
+        <button class="action-btn secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/>
+          </svg>
+          Screenshot
+        </button>
+      </div>
+
+      <div class="emergency-stop">
+        <span class="icon">⏹</span>
+        <span>STOP</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

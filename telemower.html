@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Telemower - CrowdMow</title>
+  <meta name="description" content="Meet the CrowdMow Telemower - a precision remote-operated mower with HD cameras, articulated trimmer arm, and all-terrain capability.">
+  <meta name="author" content="CrowdMow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta property="og:title" content="The Telemower - CrowdMow">
+  <meta property="og:description" content="Meet the CrowdMow Telemower - a precision remote-operated mower with HD cameras, articulated trimmer arm, and all-terrain capability.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://crowdmow.com/telemower.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CrowdMow">
+  <meta name="twitter:image" content="https://crowdmow.com/telemower.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .product-hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    }
+
+    .product-image-container {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .product-image-container img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    .product-title {
+      font-size: 3.5rem;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 768px) {
+      .product-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid #f0f0f0;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .specs-section {
+      background: #111827;
+      color: white;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .specs-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .spec-item {
+      padding: 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .spec-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #22c55e;
+      margin-bottom: 4px;
+      font-family: 'system-ui', sans-serif;
+    }
+
+    .spec-label {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    .highlight-section {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .highlight-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .highlight-item {
+      text-align: center;
+    }
+
+    .highlight-item .icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 36px;
+    }
+
+    .highlight-item h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .highlight-item p {
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .how-it-works-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 32px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    @media (max-width: 600px) {
+      .how-it-works-item {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .how-it-works-item .number {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .how-it-works-item .number {
+        margin: 0 auto;
+      }
+    }
+
+    .how-it-works-item h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .how-it-works-item p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen bg-background">
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo group">
+          <div class="logo-icon bg-gradient-hero shadow-glow">
+            <svg class="w-5 h-5 text-primary-foreground rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+            </svg>
+          </div>
+          <span class="logo-text text-foreground">Crowd<span class="text-gradient-hero">Mow</span></span>
+        </a>
+        <nav class="nav">
+          <a href="telemower.html" class="nav-link">The Telemower</a>
+          <a href="owners.html" class="nav-link">For Lawn Owners</a>
+          <a href="mowernauts.html" class="nav-link">For Mowernauts</a>
+          <a href="security.html" class="nav-link">Security</a>
+          <a href="why-human.html" class="nav-link">Why Human?</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+      <div class="container px-4">
+        <div class="text-center mb-12">
+          <p class="text-primary font-semibold mb-4">Introducing</p>
+          <h1 class="product-title font-display font-bold text-foreground mb-6">
+            The CrowdMow <span class="text-gradient-hero">Telemower</span>
+          </h1>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Precision-engineered for remote operation. HD cameras, articulated trimmer arm, and all-terrain capability - controlled by expert human operators.
+          </p>
+        </div>
+
+        <div class="product-image-container">
+          <img src="telemower.png" alt="CrowdMow Telemower">
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-24 bg-background">
+      <div class="container px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-4xl font-bold text-foreground mb-4">Built for Remote Excellence</h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Every component designed for precision teleoperation and professional results
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📹</div>
+            <h3>Dual HD Cameras</h3>
+            <p>Wide-angle bow camera for navigation and close-up blade camera for precision work. 1080p streaming with minimal latency.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🦾</div>
+            <h3>Articulated Trimmer Arm</h3>
+            <p>Deployable trimmer reaches edges, corners, and obstacles that the main blade can't. Full 180° articulation range.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛞</div>
+            <h3>All-Terrain Wheels</h3>
+            <p>Rugged pneumatic tires handle slopes up to 20°, wet grass, and uneven terrain without losing traction.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔋</div>
+            <h3>Extended Battery</h3>
+            <p>High-capacity lithium battery provides 2+ hours of continuous mowing. Fast charging gets you back up in 90 minutes.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📡</div>
+            <h3>4G/5G Connectivity</h3>
+            <p>Built-in cellular modem with fallback WiFi ensures rock-solid connection for uninterrupted remote operation.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Obstacle Detection</h3>
+            <p>AI-powered sensors detect and highlight obstacles in real-time, helping operators navigate safely around your yard.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🗺️</div>
+            <h3>SLAM Mapping</h3>
+            <p>Automatically builds a detailed map of your lawn over time. Operators see exactly where they've mowed and what's left.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔊</div>
+            <h3>Two-Way Audio</h3>
+            <p>Built-in speaker and microphone let operators communicate if needed - like warning someone they're about to start.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Variable Blade Speed</h3>
+            <p>Adjustable RPM from 1,800 to 3,200 lets operators match blade speed to grass conditions for the perfect cut.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section class="specs-section py-24">
+      <div class="container px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-4xl font-bold mb-4">Technical Specifications</h2>
+          <p class="text-xl text-gray-400">Professional-grade hardware for professional results</p>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-value">22"</div>
+            <div class="spec-label">Cutting Width</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">1-4"</div>
+            <div class="spec-label">Height Range</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">2+ hrs</div>
+            <div class="spec-label">Battery Life</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">20°</div>
+            <div class="spec-label">Max Slope</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">1080p</div>
+            <div class="spec-label">Camera Resolution</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">&lt;50ms</div>
+            <div class="spec-label">Control Latency</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">65 lbs</div>
+            <div class="spec-label">Weight</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-value">IP65</div>
+            <div class="spec-label">Weather Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Teleoperated -->
+    <section class="highlight-section py-24">
+      <div class="container px-4">
+        <div class="text-center mb-16 relative z-10">
+          <h2 class="font-display text-4xl font-bold mb-4">Why Teleoperated?</h2>
+          <p class="text-xl opacity-90 max-w-2xl mx-auto">
+            The perfect balance of robotic precision and human intelligence
+          </p>
+        </div>
+
+        <div class="highlight-grid">
+          <div class="highlight-item">
+            <div class="icon">🤖</div>
+            <h3>Robot Precision</h3>
+            <p>Consistent cut height, perfect straight lines, and tireless operation. The machine handles the physical work.</p>
+          </div>
+          <div class="highlight-item">
+            <div class="icon">🧠</div>
+            <h3>Human Judgment</h3>
+            <p>Real-time decisions about obstacles, pattern changes, and special attention areas. No algorithm can match human intuition.</p>
+          </div>
+          <div class="highlight-item">
+            <div class="icon">✨</div>
+            <h3>Perfect Results</h3>
+            <p>The combination delivers results that neither fully autonomous robots nor traditional mowing can achieve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-24 bg-muted">
+      <div class="container px-4">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-4xl font-bold text-foreground mb-4">How It Works</h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            From delivery to perfect lawn in four simple steps
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div class="how-it-works-item">
+            <div class="number">1</div>
+            <div>
+              <h3>We Ship Your Telemower</h3>
+              <p>Your Telemower arrives fully assembled and ready to go. Just charge it up and place it on your lawn. No boundary wires, no complex setup.</p>
+            </div>
+          </div>
+
+          <div class="how-it-works-item">
+            <div class="number">2</div>
+            <div>
+              <h3>Schedule Your First Mow</h3>
+              <p>Use the CrowdMow app to schedule a convenient time. Our Mowernauts are available 7 days a week, including evenings.</p>
+            </div>
+          </div>
+
+          <div class="how-it-works-item">
+            <div class="number">3</div>
+            <div>
+              <h3>A Mowernaut Takes Control</h3>
+              <p>At your scheduled time, a trained operator connects remotely and begins mowing. Watch live if you want, or just let them work.</p>
+            </div>
+          </div>
+
+          <div class="how-it-works-item">
+            <div class="number">4</div>
+            <div>
+              <h3>Enjoy Your Perfect Lawn</h3>
+              <p>When complete, you'll receive photos and a session summary. Rate your Mowernaut and schedule your next mow with one tap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gradient-hero">
+      <div class="container px-4 text-center">
+        <h2 class="font-display text-4xl font-bold text-primary-foreground mb-6">
+          Ready to Get Your Telemower?
+        </h2>
+        <p class="text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-4">
+          We're building telemowers as fast as we can and shipping in the order received.
+        </p>
+        <p class="text-primary-foreground/70 mb-10">
+          Current lead time: 2-3 months
+        </p>
+        <a href="waitlist.html" class="btn btn-hero btn-xl">
+          Get Your Telemower
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container px-4">
+        <div class="footer-grid">
+          <div class="footer-section space-y-4">
+            <a href="index.html" class="logo">
+              <div class="logo-icon bg-gradient-hero">
+                <svg class="w-5 h-5 text-primary-foreground rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+                </svg>
+              </div>
+              <span class="font-display text-xl font-bold">CrowdMow</span>
+            </a>
+            <p class="text-background/70 text-sm">Connecting lawn lovers with lawn owners through the magic of remote mowing.</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>For Owners</h4>
+            <ul>
+              <li><a href="owners.html">How It Works</a></li>
+              <li><a href="owners.html">Pricing</a></li>
+              <li><a href="security.html">Security</a></li>
+              <li><a href="why-human.html">Why Human Operators</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>For Mowernauts</h4>
+            <ul>
+              <li><a href="mowernauts.html">Start Earning</a></li>
+              <li><a href="mowernauts.html">The Cockpit</a></li>
+              <li><a href="mowernauts.html">Community</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 CrowdMow. All rights reserved. Making lawns beautiful, one remote mow at a time. <a href="https://josh.com/contact.html" style="color: inherit; text-decoration: underline;">Contact</a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
