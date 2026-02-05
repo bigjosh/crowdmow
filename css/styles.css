@@ -181,6 +181,8 @@ a {
   transition: all 0.2s ease;
   font-family: inherit;
   font-size: 1rem;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-xl {
@@ -194,20 +196,10 @@ a {
   box-shadow: 0 4px 20px -4px hsl(142, 70%, 45%, 0.5);
 }
 
-.btn-owner:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px -4px hsl(142, 70%, 45%, 0.6);
-}
-
 .btn-mowernaut {
   background: var(--sky);
   color: white;
   box-shadow: 0 4px 20px -4px hsl(200, 80%, 55%, 0.5);
-}
-
-.btn-mowernaut:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px -4px hsl(200, 80%, 55%, 0.6);
 }
 
 .btn-hero {
@@ -216,19 +208,10 @@ a {
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.2);
 }
 
-.btn-hero:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.3);
-}
-
 .btn-outline {
   background: transparent;
   color: var(--foreground);
   border: 2px solid var(--border);
-}
-
-.btn-outline:hover {
-  background: var(--muted);
 }
 
 .btn-hero-outline {
@@ -237,9 +220,52 @@ a {
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn-hero-outline:hover {
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  .btn-owner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px -4px hsl(142, 70%, 45%, 0.6);
+  }
+
+  .btn-mowernaut:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px -4px hsl(200, 80%, 55%, 0.6);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-outline:hover {
+    background: var(--muted);
+  }
+
+  .btn-hero-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Active states for touch devices */
+.btn-owner:active {
+  transform: scale(0.98);
+}
+
+.btn-mowernaut:active {
+  transform: scale(0.98);
+}
+
+.btn-hero:active {
+  transform: scale(0.98);
+}
+
+.btn-outline:active {
+  background: var(--muted);
+}
+
+.btn-hero-outline:active {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Header */
@@ -304,9 +330,85 @@ a {
   color: var(--foreground);
 }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--foreground);
+  stroke-width: 2;
+}
+
+.mobile-menu-btn .close-icon {
+  display: none;
+}
+
+.mobile-menu-btn.open .hamburger-icon {
+  display: none;
+}
+
+.mobile-menu-btn.open .close-icon {
+  display: block;
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+  z-index: 40;
+  padding: 1.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 1rem 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--foreground);
+  border-radius: 0.75rem;
+  transition: background 0.2s;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: var(--muted);
+}
+
 @media (min-width: 768px) {
   .nav {
     display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none !important;
   }
 }
 
@@ -574,3 +676,17 @@ a {
 .from-foreground\/70 { --tw-gradient-from: hsla(150, 30%, 12%, 0.7); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent); }
 .via-foreground\/50 { --tw-gradient-via: hsla(150, 30%, 12%, 0.5); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent); }
 .to-foreground\/80 { --tw-gradient-to: hsla(150, 30%, 12%, 0.8); }
+
+/* Additional utilities */
+.flex-1 { flex: 1 1 0%; }
+.w-auto { width: auto; }
+
+@media (min-width: 768px) {
+  .md\:w-auto { width: auto; }
+}
+
+/* Mobile text size adjustments */
+@media (max-width: 767px) {
+  .text-8xl { font-size: 4rem; }
+  .text-9xl { font-size: 5rem; }
+}

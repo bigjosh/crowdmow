@@ -286,7 +286,22 @@
           <a href="security.html" class="nav-link">Security</a>
           <a href="why-human.html" class="nav-link">Why Human?</a>
         </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
+      <nav class="mobile-nav">
+        <a href="telemower.html" class="mobile-nav-link">The Telemower</a>
+        <a href="owners.html" class="mobile-nav-link">For Lawn Owners</a>
+        <a href="mowernauts.html" class="mobile-nav-link">For Mowernauts</a>
+        <a href="security.html" class="mobile-nav-link">Security</a>
+        <a href="why-human.html" class="mobile-nav-link">Why Human?</a>
+      </nav>
     </header>
 
     <!-- Product Hero -->
@@ -558,5 +573,15 @@
       </div>
     </footer>
   </div>
+  <script>
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  </script>
 </body>
 </html>
